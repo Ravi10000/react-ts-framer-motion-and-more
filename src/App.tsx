@@ -145,16 +145,23 @@ function App() {
     // </div >
 
     <div className="flex flex-col overflow-hidden min-h-[100vh]">
-      <motion.svg
+      {/* <motion.svg
         width="105"
         height="286"
         viewBox="0 0 105 286"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="h-fit self-center m-2 rotate-90"
         variants={svgVarients}
         initial="initial"
         animate="animate"
-        className="h-fit self-center m-2 rotate-90"
+        drag
+        dragConstraints={{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}
       >
         <motion.path
           d="M16.0289 72.5L55 5L93.9711 72.5H16.0289Z"
@@ -177,6 +184,47 @@ function App() {
           height="75"
           stroke="#8BCF69"
           // strokeWidth="10"
+          variants={pathVarients}
+        />
+      </motion.svg> */}
+      <motion.svg
+        width="287"
+        height="106"
+        viewBox="0 0 287 106"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-fit self-center m-2"
+        variants={svgVarients}
+        initial="initial"
+        animate="animate"
+        drag
+        dragConstraints={{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}
+      >
+        <motion.path
+          d="M216.5 20.859L276.5 55.5L216.5 90.141L216.5 20.859Z"
+          stroke="#3C8DA5"
+          variants={pathVarients}
+        />
+        <motion.circle
+          cx="150.5"
+          cy="55.5"
+          r="35"
+          transform="rotate(90 150.5 55.5)"
+          stroke="#FC6541"
+          variants={pathVarients}
+        />
+        <motion.rect
+          x="87.5"
+          y="20.5"
+          width="70"
+          height="70"
+          transform="rotate(90 87.5 20.5)"
+          stroke="#8BCF69"
           variants={pathVarients}
         />
       </motion.svg>
