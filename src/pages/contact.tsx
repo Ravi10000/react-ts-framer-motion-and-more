@@ -8,30 +8,30 @@ function ContactPage() {
     show: {
       x: 0,
       transition: {
-        dealy: 1.5,
-        duration: 1.5,
-        // type: "spring",
-        // mass: 0.4,
-        // damping: 8,
+        // dealy: 1.5,
+        // duration: .75,
+        type: "spring",
+        mass: 0.4,
+        damping: 10,
       },
     },
     exit: {
-      x: "-70vw",
+      x: "100vw",
       transition: {
         ease: "easeInOut",
-        duration: 1,
+        // duration: 1,
       },
     },
   };
   return (
     <motion.div
-      className="text-yellow-400 flex flex-col p-10 items-center justify-center"
+      className="page bg-yellow-400"
       variants={containerVariants}
       exit="exit"
       initial="hidden"
       animate="show"
     >
-      <h1 className="text-[100px] font-bold" >CONTACT PAGE</h1>
+      <h1 className="page-heading">CONTACT PAGE</h1>
     </motion.div>
   );
 }

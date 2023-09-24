@@ -8,19 +8,19 @@ function HomePage() {
     show: {
       opacity: 1,
       transition: {
-        dealy: 1.5,
-        duration: 1.5,
+        // dealy: 1.5,
+        // duration: 0.75,
         // dealy: .4,
-        // type: "spring",
-        // mass: 0.4,
-        // damping: 8,
+        type: "spring",
+        mass: 0.4,
+        damping: 8,
       },
     },
     exit: {
       x: "-100vw",
       transition: {
         ease: "easeInOut",
-        duration: 1,
+        // duration: 1,
       },
     },
   };
@@ -39,13 +39,13 @@ function HomePage() {
   // }
   return (
     <motion.div
-      className="text-red-400 flex flex-col p-10 items-center justify-center"
+      className="page bg-red-400"
       variants={containerVariants}
       initial="hidden"
       animate="show"
       exit="exit"
     >
-      <h1 className="text-[100px] font-bold">HOME PAGE</h1>
+      <h1 className="page-heading">HOME PAGE</h1>
     </motion.div>
   );
 }

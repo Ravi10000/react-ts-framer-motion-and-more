@@ -1,15 +1,31 @@
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
-import './App.css'
-// import { useState } from 'react'
+import { Link, Route, Routes, useLocation } from "react-router-dom";
+import "./App.css";
+import { useState } from "react";
 // import { Button } from './components/button'
-import {
-  // motion
-  // ,
-  AnimatePresence
-} from 'framer-motion'
-import HomePage from './pages/home'
-import AboutPage from './pages/about'
-import ContactPage from './pages/contact'
+import { motion, AnimatePresence } from "framer-motion";
+import HomePage from "./pages/home";
+import AboutPage from "./pages/about";
+import ContactPage from "./pages/contact";
+import { Fragment } from "react";
+import Modal from "./components/modal";
+
+const links = [
+  {
+    name: "Home",
+    path: "/",
+    color: "red-400",
+  },
+  {
+    name: "About",
+    path: "/about",
+    color: "green-400",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+    color: "yellow-400",
+  },
+] as const;
 
 function App() {
   // const containerVariants = {
@@ -63,6 +79,36 @@ function App() {
   // }
   // const [showTitle, setShowTitle] = useState(true)
   const location = useLocation();
+  console.log({ location });
+  const [showModal, setShowModal] = useState(false);
+  const svgVarients = {
+    initial: {
+      // opacity: 0,
+      // rotate: "360deg",
+    },
+    animate: {
+      // opacity: 1,
+      // rotate: 0,
+      transition: {
+        // duration: 0.5,
+        staggerChildren: 0.5,
+      },
+    },
+  };
+  const pathVarients = {
+    initial: {
+      pathLength: 0,
+      // strokeWidth: 10,
+    },
+    animate: {
+      pathLength: 1,
+      // strokeWidth: 10,
+      transition: {
+        duration: 0.75,
+        // repeat: Infinity,
+      },
+    },
+  };
   return (
     // <div>
     //   <motion.div className='flex gap-5 flex-col w-full h-[100vh] items-center justify-center overflow-hidden max-w-[100vw]'
@@ -96,15 +142,71 @@ function App() {
     //     </div>
     //   </motion.div>
     // </div >
-    <div className='flex flex-col gap-10 w-full overflow-hidden min-h-[100vh]'>
-      <ul className='flex gap-5 font-bold p-2'>
-        <Link to="/" className='hover:text-blue-500'>Home Page</Link>
-        |
-        <Link to="/about" className='hover:text-blue-500'>About Page</Link>
-        |
-        <Link to="/contact" className='hover:text-blue-500'>Contact Page</Link>
+
+    <div className="flex flex-col overflow-hidden min-h-[100vh]">
+      <motion.svg
+        width="105"
+        height="286"
+        viewBox="0 0 105 286"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        variants={svgVarients}
+        initial="initial"
+        animate="animate"
+        className="h-fit self-center m-2 rotate-90"
+      >
+        <motion.path
+          d="M16.0289 72.5L55 5L93.9711 72.5H16.0289Z"
+          stroke="#3C8DA5"
+          // strokeWidth="10"
+          variants={pathVarients}
+        />
+        <motion.circle
+          cx="55"
+          cy="136"
+          r="37.5"
+          stroke="#FC6541"
+          // strokeWidth="10"
+          variants={pathVarients}
+        />
+        <motion.rect
+          x="17.5"
+          y="196.5"
+          width="75"
+          height="75"
+          stroke="#8BCF69"
+          // strokeWidth="10"
+          variants={pathVarients}
+        />
+      </motion.svg>
+
+      <motion.button
+        className="fixed right-2 bottom-2 bg-white text-gray px-5 py-3 rounded-md font-medium uppercase text-sm z-10"
+        onClick={() => setShowModal(true)}
+        whileTap={{ scale: 0.9 }}
+      >
+        Toggle Modal
+      </motion.button>
+      <Modal setShowModal={setShowModal} showModal={showModal} />
+      <ul className="flex justify-center gap-5 font-bold p-5 ">
+        {links?.map((link, index) => (
+          <Fragment key={link?.name}>
+            <Link
+              to={link?.path}
+              className={`hover:text-${link?.color} px-3 py-1 text-center ${
+                link.path === location.pathname ? "text-blue-600" : ""
+              }`}
+            >
+              {link?.name}
+            </Link>
+            {index < links?.length - 1 && "|"}
+          </Fragment>
+        ))}
       </ul>
-      <AnimatePresence mode='wait'>
+      <AnimatePresence
+        mode="wait"
+        onExitComplete={() => setShowModal(false)} // as route changes the modal will get closed
+      >
         <Routes location={location} key={location.key}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -112,7 +214,7 @@ function App() {
         </Routes>
       </AnimatePresence>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
