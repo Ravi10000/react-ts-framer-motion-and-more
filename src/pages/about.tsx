@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Move from "../components/move";
 
 function AboutPage() {
   const containerVariants = {
@@ -32,7 +33,9 @@ function AboutPage() {
       animate="show"
       exit="exit"
     >
-      <h1 className="page-heading">ABOUT PAGE</h1>
+      <Move>
+        <h1 className="page-heading">ABOUT PAGE</h1>
+      </Move>
     </motion.div>
   );
 }

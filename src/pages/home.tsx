@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Move from "../components/move";
 
 function HomePage() {
   const containerVariants = {
@@ -45,7 +46,9 @@ function HomePage() {
       animate="show"
       exit="exit"
     >
-      <h1 className="page-heading">HOME PAGE</h1>
+      <Move>
+        <h1 className="page-heading">HOME PAGE</h1>
+      </Move>
     </motion.div>
   );
 }

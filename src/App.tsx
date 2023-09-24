@@ -91,7 +91,7 @@ function App() {
       // rotate: 0,
       transition: {
         // duration: 0.5,
-        staggerChildren: 0.5,
+        staggerChildren: 2,
       },
     },
   };
@@ -104,7 +104,8 @@ function App() {
       pathLength: 1,
       // strokeWidth: 10,
       transition: {
-        duration: 0.75,
+        repeat: Infinity,
+        duration: 2,
         // repeat: Infinity,
       },
     },
@@ -189,19 +190,30 @@ function App() {
       </motion.button>
       <Modal setShowModal={setShowModal} showModal={showModal} />
       <ul className="flex justify-center gap-5 font-bold p-5 ">
-        {links?.map((link, index) => (
-          <Fragment key={link?.name}>
-            <Link
-              to={link?.path}
-              className={`hover:text-${link?.color} px-3 py-1 text-center ${
-                link.path === location.pathname ? "text-blue-600" : ""
-              }`}
-            >
-              {link?.name}
-            </Link>
-            {index < links?.length - 1 && "|"}
-          </Fragment>
-        ))}
+        {links?.map((link, index) => {
+          return (
+            <Fragment key={link?.name}>
+              <motion.p
+                whileHover={{
+                  y: -5,
+                }}
+                whileTap={{
+                  scale: 0.75,
+                }}
+              >
+                <Link
+                  to={link?.path}
+                  className={`hover:text-blue-300 px-3 py-1 text-center ${
+                    link.path === location.pathname ? "text-blue-600" : ""
+                  }`}
+                >
+                  {link?.name}
+                </Link>
+              </motion.p>
+              {index < links?.length - 1 && "|"}
+            </Fragment>
+          );
+        })}
       </ul>
       <AnimatePresence
         mode="wait"

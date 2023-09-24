@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Move from "../components/move";
 
 function ContactPage() {
   const containerVariants = {
@@ -31,7 +32,9 @@ function ContactPage() {
       initial="hidden"
       animate="show"
     >
-      <h1 className="page-heading">CONTACT PAGE</h1>
+      <Move>
+        <h1 className="page-heading">CONTACT PAGE</h1>
+      </Move>
     </motion.div>
   );
 }

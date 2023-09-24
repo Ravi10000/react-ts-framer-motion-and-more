@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .page {
-  @apply flex flex-col items-center justify-center text-center text-white grow;
+  @apply flex flex-col items-center justify-center text-center text-white grow overflow-hidden;
 }
 
 .page-heading {
-  @apply text-[70px] font-bold;
+  @apply text-[70px] font-bold drop-shadow-white;
 }
