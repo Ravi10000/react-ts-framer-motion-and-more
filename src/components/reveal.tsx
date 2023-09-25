@@ -6,7 +6,7 @@ type revealProps = {
 
 function Reveal({ children }: revealProps) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref);
     const mainControls = useAnimation();
     const barControls = useAnimation();
     const revealVariants = {
@@ -25,13 +25,12 @@ function Reveal({ children }: revealProps) {
     }
     const barVariants = {
         initial: {
-            left: "-100%",
+            left: 0,
         },
         animate: {
-            left: 0,
+            left: "100%",
             transition: {
                 duration: .5,
-                // delay: .25,
                 ease: "easeInOut"
             }
         }
@@ -42,16 +41,26 @@ function Reveal({ children }: revealProps) {
             mainControls.start("animate");
         }
         // this works for {once: false} which is default
-        //  else {
-        //     mainControls.start("initial");
-        // }
+        else {
+            barControls.start("initial");
+            mainControls.start("initial");
+        }
     }, [isInView])
-    return <motion.div className='relative outline overflow-hidden'>
+    const colors = ["bg-blue-400", "bg-red-400", "bg-green-400", "bg-yellow-400"];
+    function randomInteger(min = 0, max = 3) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    return <motion.div className='relative overflow-hidden'>
         <motion.div variants={revealVariants} initial="initial" animate={mainControls} ref={ref}>
             {children}
         </motion.div>
 
-        <motion.div className='absolute h-full w-full top-0 left-0 bg-green-400 z-10' variants={barVariants} animate={barControls}></motion.div>
+        <motion.div className={`absolute h-full w-full top-0 left-0 z-10 ${colors[randomInteger()]}`}
+            variants={barVariants}
+            initial="initial"
+            animate={barControls}
+        >
+        </motion.div>
     </motion.div>
 }
 
