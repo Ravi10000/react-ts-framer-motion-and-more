@@ -104,7 +104,7 @@ function App() {
       pathLength: 1,
       // strokeWidth: 10,
       transition: {
-        repeat: Infinity,
+        // repeat: Infinity,
         duration: 2,
         // repeat: Infinity,
       },
@@ -205,11 +205,7 @@ function App() {
           bottom: 0,
         }}
       >
-        <motion.path
-          d="M216.5 20.859L276.5 55.5L216.5 90.141L216.5 20.859Z"
-          stroke="#3C8DA5"
-          variants={pathVarients}
-        />
+        
         <motion.circle
           cx="150.5"
           cy="55.5"
@@ -225,6 +221,11 @@ function App() {
           height="70"
           transform="rotate(90 87.5 20.5)"
           stroke="#8BCF69"
+          variants={pathVarients}
+        />
+        <motion.path
+          d="M216.5 20.859L276.5 55.5L216.5 90.141L216.5 20.859Z"
+          stroke="#3C8DA5"
           variants={pathVarients}
         />
       </motion.svg>

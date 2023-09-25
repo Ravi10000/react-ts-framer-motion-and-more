@@ -4,10 +4,14 @@ import Move from "../components/move";
 function ContactPage() {
   const containerVariants = {
     hidden: {
-      x: "100vw",
+      // x: "100vw",
+      scale: 0,
+      opacity: 0,
     },
     show: {
-      x: 0,
+      // x: 0,
+      scale: 1,
+      opacity: 1,
       transition: {
         // dealy: 1.5,
         // duration: .75,
@@ -28,9 +32,9 @@ function ContactPage() {
     <motion.div
       className="page bg-yellow-400"
       variants={containerVariants}
-      exit="exit"
       initial="hidden"
       animate="show"
+      exit="hidden"
     >
       <Move>
         <h1 className="page-heading">CONTACT PAGE</h1>

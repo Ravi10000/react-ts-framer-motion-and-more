@@ -32,9 +32,9 @@ function Move({ children }: moveProps) {
       }}
       transition={{
         type: "spring",
-        stiffness: 150,
-        damping: 10,
-        mass: 0.5,
+        stiffness: 200,
+        damping: 15,
+        mass: .75,
       }}
     >
       {children}

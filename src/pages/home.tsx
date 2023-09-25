@@ -44,7 +44,7 @@ function HomePage() {
       variants={containerVariants}
       initial="hidden"
       animate="show"
-      exit="exit"
+      exit="hidden"
     >
       <Move>
         <h1 className="page-heading">HOME PAGE</h1>
