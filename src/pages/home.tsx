@@ -62,7 +62,7 @@ function HomePage() {
             blanditiis quaerat omnis enim asperiores eaque nulla nemo dicta veritatis culpa. Ipsum voluptate corrupti accusamus et.</h1>
         </Reveal>
         <Reveal>
-          <h1 className="text-lg font-bold max-w-[800px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, iusto exercitationem dolorem sequi natus, blanditiis quaerat omnis enim asperiores eaque nulla nemo dicta veritatis culpa. Ipsum voluptate corrupti accusamus et.</h1>
+          <h1 className="text-lg font-bold"><div className="h-[80px] flex items-center"><p>Lorem ipsum dolor</p></div></h1>
         </Reveal>
         <Reveal>
           <h1 className="text-lg font-bold max-w-[800px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, iusto exercitationem dolorem sequi natus, blanditiis quaerat omnis enim asperiores eaque nulla nemo dicta veritatis culpa. Ipsum voluptate corrupti accusamus et.</h1>
