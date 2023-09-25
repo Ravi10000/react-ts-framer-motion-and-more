@@ -2,7 +2,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { useState } from "react";
 // import { Button } from './components/button'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useDragControls } from "framer-motion";
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
@@ -81,6 +81,10 @@ function App() {
   const location = useLocation();
   console.log({ location });
   const [showModal, setShowModal] = useState(false);
+  const controls = useDragControls()
+  function startDrag(event: React.PointerEvent<SVGSVGElement>) {
+    controls.start(event)
+  }
   const svgVarients = {
     initial: {
       // opacity: 0,
@@ -198,6 +202,8 @@ function App() {
         initial="initial"
         animate="animate"
         drag
+        dragControls={controls}
+        onPointerDown={startDrag}
         dragConstraints={{
           top: 0,
           left: 0,
@@ -205,7 +211,7 @@ function App() {
           bottom: 0,
         }}
       >
-        
+
         <motion.circle
           cx="150.5"
           cy="55.5"
@@ -252,9 +258,8 @@ function App() {
               >
                 <Link
                   to={link?.path}
-                  className={`hover:text-blue-300 px-3 py-1 text-center ${
-                    link.path === location.pathname ? "text-blue-600" : ""
-                  }`}
+                  className={`hover:text-blue-300 px-3 py-1 text-center ${link.path === location.pathname ? "text-blue-600" : ""
+                    }`}
                 >
                   {link?.name}
                 </Link>
