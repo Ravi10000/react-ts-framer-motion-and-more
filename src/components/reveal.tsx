@@ -18,8 +18,7 @@ function Reveal({ children }: revealProps) {
             opacity: 1,
             y: 0,
             transition: {
-                delay: .5,
-                // duration: 1,
+                delay: .15,
             }
         }
     }
@@ -30,7 +29,7 @@ function Reveal({ children }: revealProps) {
         animate: {
             left: "100%",
             transition: {
-                duration: .5,
+                duration: .35,
                 ease: "easeInOut"
             }
         }
@@ -46,16 +45,17 @@ function Reveal({ children }: revealProps) {
             mainControls.start("initial");
         }
     }, [isInView])
-    const colors = ["bg-blue-400", "bg-red-400", "bg-green-400", "bg-yellow-400"];
-    function randomInteger(min = 0, max = 3) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    // const colors = ["bg-blue-400", "bg-red-400", "bg-green-400", "bg-yellow-400"];
+    // function randomInteger(min = 0, max = 3) {
+    //     return Math.floor(Math.random() * (max - min + 1)) + min;
+    // }
+    // ${colors[randomInteger()]}
     return <motion.div className='relative overflow-hidden'>
         <motion.div variants={revealVariants} initial="initial" animate={mainControls} ref={ref}>
             {children}
         </motion.div>
 
-        <motion.div className={`absolute h-full w-full top-0 left-0 z-10 ${colors[randomInteger()]}`}
+        <motion.div className={`absolute h-full w-full top-0 left-0 z-10 bg-[#abc4ff]`}
             variants={barVariants}
             initial="initial"
             animate={barControls}
