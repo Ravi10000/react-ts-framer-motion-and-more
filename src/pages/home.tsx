@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Move from "../components/move";
+import Reveal from "../components/reveal";
 
 function HomePage() {
   const containerVariants = {
@@ -46,9 +47,14 @@ function HomePage() {
       animate="show"
       exit="hidden"
     >
-      <Move>
+      <div className="w-full grow flex flex-col min-h-[300px] max-h-[500px]"><Move>
         <h1 className="page-heading">HOME PAGE</h1>
-      </Move>
+      </Move></div>
+      <div className="bg-yellow-300 h-[100vh] w-full flex items-end justify-center mb-[200px] p-10">
+        <Reveal>
+          <h1 className="text-lg font-bold max-w-[200px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, iusto exercitationem dolorem sequi natus, blanditiis quaerat omnis enim asperiores eaque nulla nemo dicta veritatis culpa. Ipsum voluptate corrupti accusamus et.</h1>
+        </Reveal>
+      </div>
     </motion.div>
   );
 }
