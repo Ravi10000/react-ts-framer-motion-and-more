@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import Move from "../components/move";
+import { useCounter } from "../store/use-counter";
 
 function AboutPage() {
+  const count = useCounter(state => state.count)
+  const increment = useCounter(state => state.increment)
+  const decrement = useCounter(state => state.decrement)
   const containerVariants = {
     hidden: {
       x: "100vw",
@@ -33,6 +37,11 @@ function AboutPage() {
       animate="show"
       exit="exit"
     >
+       <div className="flex flex-col gap-10 items-center">
+          <p>{count}</p>
+          <motion.button className="px-5 py-2 bg-green-400" onClick={increment} whileTap={{ scale: .8 }}>👆</motion.button>
+          <motion.button className="px-5 py-2 bg-orange-400" onClick={decrement} whileTap={{ scale: .8 }}>👇</motion.button>
+        </div>
       <Move>
         <h1 className="page-heading">ABOUT PAGE</h1>
       </Move>
