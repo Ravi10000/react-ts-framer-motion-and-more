@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import Move from "../components/move";
 import Reveal from "../components/reveal";
 import { useCounter } from "../store/use-counter";
@@ -7,7 +7,7 @@ function HomePage() {
   const count = useCounter(state => state.count)
   const increment = useCounter(state => state.increment)
   const decrement = useCounter(state => state.decrement)
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {
       opacity: 0,
     },

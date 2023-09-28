@@ -1,15 +1,21 @@
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
+import React, { useState, FC } from "react";
 // import { Button } from './components/button'
-import { motion, AnimatePresence, useDragControls } from "framer-motion";
+import { motion, AnimatePresence, useDragControls, Variants } from "framer-motion";
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
 import { Fragment } from "react";
 import Modal from "./components/modal";
 
-const links = [
+type link = {
+  name: string
+  path: string
+  color: string
+}
+
+const links: link[] = [
   {
     name: "Home",
     path: "/",
@@ -80,12 +86,12 @@ function App() {
   // const [showTitle, setShowTitle] = useState(true)
   const location = useLocation();
   console.log({ location });
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const controls = useDragControls()
   function startDrag(event: React.PointerEvent<SVGSVGElement>) {
     controls.start(event)
   }
-  const svgVarients = {
+  const svgVarients: Variants = {
     initial: {
       // opacity: 0,
       // rotate: "360deg",
@@ -96,10 +102,11 @@ function App() {
       transition: {
         // duration: 0.5,
         staggerChildren: 2,
+
       },
     },
   };
-  const pathVarients = {
+  const pathVarients: Variants = {
     initial: {
       pathLength: 0,
       // strokeWidth: 10,
@@ -245,7 +252,7 @@ function App() {
       </motion.button>
       <Modal setShowModal={setShowModal} showModal={showModal} />
       <ul className="flex justify-center gap-5 font-bold p-5 ">
-        {links?.map((link, index) => {
+        {links?.map((link: link, index: number) => {
           return (
             <Fragment key={link?.name}>
               <motion.p

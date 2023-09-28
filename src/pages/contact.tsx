@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import Move from "../components/move";
 
 function ContactPage() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {
       // x: "100vw",
       scale: 0,
