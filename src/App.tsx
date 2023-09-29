@@ -294,7 +294,7 @@ function App() {
           <Route path="/next" element={<NextUIPage />} />
         </Routes>
       </AnimatePresence>
-      <Modal setShowModal={setShowModal} showModal={showModal} />s
+      <Modal setShowModal={setShowModal} showModal={showModal} />
     </div>
   );
 }
