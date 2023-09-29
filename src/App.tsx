@@ -9,6 +9,7 @@ import ContactPage from "./pages/contact";
 import { Fragment } from "react";
 import Modal from "./components/modal";
 import NextUIPage from "./pages/next-ui";
+import CustomLink from "./components/custom-link";
 
 type link = {
   name: string
@@ -256,29 +257,29 @@ function App() {
       >
         Toggle Modal
       </motion.button>
-      <Modal setShowModal={setShowModal} showModal={showModal} />
       <ul className="flex justify-center gap-5 font-bold p-5 ">
         {links?.map((link: link, index: number) => {
           return (
-            <Fragment key={link?.name}>
-              <motion.p
-                whileHover={{
-                  y: -5,
-                }}
-                whileTap={{
-                  scale: 0.75,
-                }}
-              >
-                <Link
-                  to={link?.path}
-                  className={`hover:text-blue-300 px-3 py-1 text-center ${link.path === location.pathname ? "text-blue-600" : ""
-                    }`}
-                >
-                  {link?.name}
-                </Link>
-              </motion.p>
-              {index < links?.length - 1 && "|"}
-            </Fragment>
+            <CustomLink index={index} link={link} length={links?.length} />
+            // <Link to={link?.path} key={link?.name} className="flex gap-5 pt-5 cursor-pointer">
+            //   <motion.p
+            //     whileHover={{
+            //       y: -5,
+            //     }}
+            //     whileTap={{
+            //       scale: 0.75,
+            //     }}
+            //   >
+            //     <p
+
+            //       className={`hover:text-blue-300 px-3 text-center ${link.path === location.pathname ? "text-blue-600" : ""
+            //         }`}
+            //     >
+            //       {link?.name}
+            //     </p>
+            //   </motion.p>
+            //   {index < links?.length - 1 && "|"}
+            // </Link>
           );
         })}
       </ul>
@@ -293,6 +294,7 @@ function App() {
           <Route path="/next" element={<NextUIPage />} />
         </Routes>
       </AnimatePresence>
+      <Modal setShowModal={setShowModal} showModal={showModal} />s
     </div>
   );
 }
