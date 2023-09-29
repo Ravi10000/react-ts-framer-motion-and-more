@@ -8,6 +8,7 @@ import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
 import { Fragment } from "react";
 import Modal from "./components/modal";
+import NextUIPage from "./pages/next-ui";
 
 type link = {
   name: string
@@ -30,6 +31,11 @@ const links: link[] = [
     name: "Contact",
     path: "/contact",
     color: "yellow-400",
+  },
+  {
+    name: "Next UI",
+    path: "/next",
+    color: "black",
   },
 ] as const;
 
@@ -284,6 +290,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/next" element={<NextUIPage />} />
         </Routes>
       </AnimatePresence>
     </div>
