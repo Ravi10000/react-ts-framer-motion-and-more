@@ -2,7 +2,12 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import React, { useState, FC } from "react";
 // import { Button } from './components/button'
-import { motion, AnimatePresence, useDragControls, Variants } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useDragControls,
+  Variants,
+} from "framer-motion";
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import ContactPage from "./pages/contact";
@@ -12,10 +17,10 @@ import NextUIPage from "./pages/next-ui";
 import CustomLink from "./components/custom-link";
 
 type link = {
-  name: string
-  path: string
-  color: string
-}
+  name: string;
+  path: string;
+  color: string;
+};
 
 const links: link[] = [
   {
@@ -94,9 +99,9 @@ function App() {
   const location = useLocation();
   console.log({ location });
   const [showModal, setShowModal] = useState<boolean>(false);
-  const controls = useDragControls()
+  const controls = useDragControls();
   function startDrag(event: React.PointerEvent<SVGSVGElement>) {
-    controls.start(event)
+    controls.start(event);
   }
   const svgVarients: Variants = {
     initial: {
@@ -109,7 +114,6 @@ function App() {
       transition: {
         // duration: 0.5,
         staggerChildren: 2,
-
       },
     },
   };
@@ -225,7 +229,6 @@ function App() {
           bottom: 0,
         }}
       >
-
         <motion.circle
           cx="150.5"
           cy="55.5"
