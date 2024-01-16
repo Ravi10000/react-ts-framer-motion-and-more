@@ -2,6 +2,7 @@ import { Variants, motion } from "framer-motion";
 import Move from "../components/move";
 import Reveal from "../components/reveal";
 import { useCounter } from "../store/use-counter";
+import { Toaster, toast } from 'sonner';
 
 function HomePage() {
   const count = useCounter(state => state.count)
@@ -51,6 +52,10 @@ function HomePage() {
       animate="show"
       exit="hidden"
     >
+      <div>
+        <Toaster />
+        <button onClick={() => toast('My first toast')}>Give me a toast</button>
+      </div>
       <div className="w-full grow flex flex-col h-[70vh] max-h-[800px]">
         <div className="flex flex-col gap-10 items-center">
           <p>{count}</p>
